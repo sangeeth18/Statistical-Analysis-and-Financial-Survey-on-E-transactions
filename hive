@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS bank (sno int,month varchar(10),Bankname varchar(50),transaction int, value int)row format delimited fields terminated by ',' lines terminated by '\n';
+
+LOAD DATA LOCAL INPATH '/home/sw15/Documents/project/datasets/Mobile.csv ' OVERWRITE INTO TABLE bank;
+
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/sw15/Documents/sangeeth'  ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' select bankname,avg(transaction) from bank group by bankname;
+
